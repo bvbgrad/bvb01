@@ -6,6 +6,7 @@
 	</head>
 	<body>
 		Hello world.
-		<br> Under Construction (as of =new java.util.Date()) <br>
+		<br> Under Construction (as of <%=new java.util.Date() %>) <br>
+		<% %>
 	</body>
 </html>
