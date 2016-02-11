@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
  
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "org.ll4.test")
+@ComponentScan(basePackages = "org.ll4.test.bvb01.*")
 public class bvb01Configuration {
     @Bean
     public ViewResolver viewResolver() {
