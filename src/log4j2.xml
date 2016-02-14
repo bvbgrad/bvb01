@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration status="info">
+    <Properties>
+        <Property name="log-path">/Users/bvb</Property>
+    </Properties>
     <appenders>
-        <Console name="console">
-            <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} %-5level %logger{32} %msg%n" />
+        <Console name="STDOUT">
+            <PatternLayout pattern="%d %-5level [%t] %logger{32} %msg%n" />
         </Console>
+
+        <File name="FILE" fileName="${log-path}/logs/20160214inv01.log" immediateFlush="true">
+            <PatternLayout pattern="%d %p [%t] %m%n" />
+        </File>
     </appenders>
-    <loggers>
+
+    <Loggers>
          <root level="info">
-            <appender-ref ref="console" />
+            <AppenderRef ref="STDOUT" />
+            <AppenderRef ref="FILE" />
         </root>
-    </loggers>
+    </Loggers>
 </configuration>

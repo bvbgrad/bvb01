@@ -18,10 +18,11 @@ public class bvb01Controller {
 
     @RequestMapping(method = RequestMethod.GET)
     public String sayHello(Locale locale, ModelMap model) {
-		logger.info("sayHello {}", locale);
 
-    	String sGreet = "Hello from bvb01. The client locale is '" + locale.toString() + "'";
-        model.addAttribute("greeting", sGreet);
+    	String sGreet = "Hello from bvb0521. Client locale = '" + locale.toString() + "'";
+    	logger.info("sayHello: {}", sGreet);
+
+    	model.addAttribute("greeting", sGreet);
         
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -29,7 +30,6 @@ public class bvb01Controller {
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate );
 		
-		logger.info("sayHello: {}", sGreet);
 
         return "welcome";
     }
