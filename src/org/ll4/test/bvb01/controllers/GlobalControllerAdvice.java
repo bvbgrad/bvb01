@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 @ControllerAdvice(annotations=Controller.class)
 public class GlobalControllerAdvice {
@@ -27,15 +27,17 @@ public class GlobalControllerAdvice {
 		
 		return formattedDate;
 	}
-	
+
 	@ExceptionHandler(Exception.class)
-	public String handleNullPointerError(HttpServletRequest req, Model model, Exception e) {
+	public ModelAndView myError(HttpServletRequest req, Exception e) {
+	    ModelAndView mav = new ModelAndView();
+		String sURL = req.getRequestURL().toString();
+		logger.error("Exception error from URL {}: full stack trace follows:", sURL, e );
 		
-		logger.error("Exception error: full stack trace follows:", e );
-		
-		model.addAttribute("sErrorMsg", e.toString());
-		model.addAttribute("url", req.getRequestURL().toString());
-		return "errorView";
-	}
+		mav.addObject("sErrorMsg", e.toString());
+		mav.addObject("url", sURL);
+	    mav.setViewName("errorView");
+	    return mav;
+	  }
 
 }
