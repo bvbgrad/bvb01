@@ -22,5 +22,4 @@ public class bvb01Configuration {
  
         return viewResolver;
     }
- 
 }

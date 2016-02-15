@@ -5,8 +5,7 @@
 <title>bvb01</title>
 </head>
 <body>
-    Greeting : ${greeting}
-    <P>  The time on the server is ${serverTime}. </P>
-        <br> Under Construction (as of <%=new java.util.Date()%>)
+    Greeting: ${greeting}
+    <br> Under Construction (as of ${currentDate})
 </body>
 </html>

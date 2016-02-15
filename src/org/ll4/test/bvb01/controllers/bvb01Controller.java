@@ -1,7 +1,6 @@
 package org.ll4.test.bvb01.controllers;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.sql.SQLException;
 import java.util.Locale;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,17 +18,10 @@ public class bvb01Controller {
     @RequestMapping(method = RequestMethod.GET)
     public String sayHello(Locale locale, ModelMap model) {
 
-    	String sGreet = "Hello from bvb0521. Client locale = '" + locale.toString() + "'";
+    	String sGreet = "Hello from bvb01. Client locale = '" + locale.toString() + "'";
     	logger.info("sayHello: {}", sGreet);
 
     	model.addAttribute("greeting", sGreet);
-        
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		model.addAttribute("serverTime", formattedDate );
-		
 
         return "welcome";
     }
@@ -38,8 +30,18 @@ public class bvb01Controller {
     public String sayHelloAgain(ModelMap model) {
     	logger.info("sayHelloAgain");
     	
-        model.addAttribute("greeting", "Hello from bvb01 Again, from Spring 4 MVC");
+        model.addAttribute("greeting", "Hello again, from Spring 4 MVC");
         return "welcome";
     }
+    
+    @RequestMapping(value = "/null")
+    public void nullPointerError() {
+    	throw new NullPointerException();
+    }
  
+    @RequestMapping(value = "/sql")
+    public void dataError() throws SQLException {
+    	throw new SQLException();
+    }
+    
 }
