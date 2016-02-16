@@ -9,7 +9,7 @@
         </Console>
 
         <File name="FILE" fileName="${log-path}/logs/20160214inv01.log" immediateFlush="true">
-            <PatternLayout pattern="%d %p [%t] %m%n" />
+            <PatternLayout pattern="%d %p [%t] %logger{32} %msg%n" />
         </File>
     </appenders>
 
